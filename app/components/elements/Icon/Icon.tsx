@@ -102,20 +102,22 @@ type Props = {
   hover?: boolean;
 };
 
-const Icon = ({ icon, onClick, className, size, hover = true }: Props) => (
-  <svg
-    onClick={onClick}
-    className={`${className} ${hover && 'hover-icon'}`}
-    width={size?.width || 25}
-    height={size?.height || 25}
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    stroke="currentColor"
-    focusable="false"
-  >
-    {`${icon} icon`}
-    {icons[icon]}
-  </svg>
-);
+const Icon = ({ icon, onClick, className, size, hover = true }: Props) => {
+  return (
+    <svg
+      onClick={onClick}
+      className={`${className} ${hover && 'hover-icon'}`}
+      width={size?.width || 25}
+      height={size?.height || 25}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      stroke="currentColor"
+      focusable="false"
+    >
+      {`${icon} icon`}
+      {icons[icon]}
+    </svg>
+  );
+};
 
 export default Icon;

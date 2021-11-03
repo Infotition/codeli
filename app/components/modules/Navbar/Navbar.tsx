@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Brand from '@element/Brand/Brand';
 import Icon, { Icons } from '@element/Icon/Icon';
+import Tooltip, { TooltipDirection } from '@element/Tooltip/Tooltip';
+
 import { ThemeProvider } from '@context/themeContext';
 import useDarkMode from '@hook/useDarkMode';
 
@@ -39,11 +41,13 @@ const SettingsMenu = ({ isActive }: { isActive: boolean }) => {
         isActive && styles.active
       } absolute ml-8 top-32 p-5 right-5 shadow-lg flex justify-end color-transition`}
     >
-      {enabled ? (
-        <Icon icon={Icons.SUN} onClick={() => setEnabled()} />
-      ) : (
-        <Icon icon={Icons.MOON} onClick={() => setEnabled()} />
-      )}
+      <Tooltip tooltip="Theme" direction={TooltipDirection.LEFT}>
+        {enabled ? (
+          <Icon icon={Icons.SUN} onClick={() => setEnabled()} />
+        ) : (
+          <Icon icon={Icons.MOON} onClick={() => setEnabled()} />
+        )}
+      </Tooltip>
     </div>
   );
 };
@@ -63,11 +67,21 @@ const Navbar = () => {
         <Brand href={'/'} className={'justify-center'} />
 
         <div className={'flex justify-end lg:space-x-5'}>
-          <Icon icon={Icons.CHAT} className={`hidden lg:flex`} />
-          <Icon
-            icon={Icons.SETTINGS}
-            onClick={() => setSettingsActive(!settingsActive)}
-          />
+          <Tooltip
+            tooltip="Diskussion"
+            direction={TooltipDirection.BOTTOM_LEFT}
+          >
+            <Icon icon={Icons.CHAT} className={`hidden lg:flex`} />
+          </Tooltip>
+          <Tooltip
+            tooltip="Einstellungen"
+            direction={TooltipDirection.BOTTOM_LEFT}
+          >
+            <Icon
+              icon={Icons.SETTINGS}
+              onClick={() => setSettingsActive(!settingsActive)}
+            />
+          </Tooltip>
         </div>
 
         <SettingsMenu isActive={settingsActive} />

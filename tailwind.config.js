@@ -17,6 +17,10 @@ module.exports = {
           light: '#FFFFFF',
           dark: '#262A3B',
         },
+        bg3: {
+          light: '#F6F9FC',
+          dark: '#313446',
+        },
         text: {
           light: '#02203C',
           dark: '#FFFFFF',

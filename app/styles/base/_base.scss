@@ -40,4 +40,16 @@ a {
   .hover-icon {
     @apply hover:color-transition hover:text-primary cursor-pointer;
   }
+
+  .right-arrow::after {
+    content: "";
+    border-color: transparent transparent transparent transparent;
+    @apply border-l-bg3-light dark:border-l-bg3-dark absolute top-[40%] left-full -mt-1 border-[5px] border-solid;
+  }
+
+  .top-right-arrow::after {
+    content: "";
+    border-color: transparent transparent transparent transparent;
+    @apply border-b-bg3-light dark:border-b-bg3-dark absolute left-[88%] bottom-full -ml-1 border-[5px] border-solid;
+  }
 }

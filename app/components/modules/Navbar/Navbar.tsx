@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useRef, MutableRefObject } from 'react';
 import Brand from '@element/Brand/Brand';
 import Icon, { Icons } from '@element/Icon/Icon';
 import Tooltip, { TooltipDirection } from '@element/Tooltip/Tooltip';
 
 import { ThemeProvider } from '@context/themeContext';
 import useDarkMode from '@hook/useDarkMode';
+import useDetectOutsideClick from '@hook/useDetextOutsideClick';
 
 import styles from './Navbar.module.scss';
 
@@ -32,11 +33,18 @@ const CourseSelection = () => (
   </div>
 );
 
-const SettingsMenu = ({ isActive }: { isActive: boolean }) => {
+const SettingsMenu = ({
+  isActive,
+  _ref,
+}: {
+  isActive: boolean;
+  _ref: MutableRefObject<any>;
+}) => {
   const [enabled, setEnabled] = useDarkMode();
 
   return (
     <div
+      ref={_ref}
       className={`${styles.settings} ${
         isActive && styles.active
       } absolute ml-8 top-32 p-5 right-5 shadow-lg flex justify-end color-transition`}
@@ -53,7 +61,11 @@ const SettingsMenu = ({ isActive }: { isActive: boolean }) => {
 };
 
 const Navbar = () => {
-  const [settingsActive, setSettingsActive] = useState(false);
+  const settingsRef = useRef(null);
+  const [settingsActive, setSettingsActive] = useDetectOutsideClick(
+    settingsRef,
+    false
+  );
 
   return (
     <ThemeProvider>
@@ -84,7 +96,7 @@ const Navbar = () => {
           </Tooltip>
         </div>
 
-        <SettingsMenu isActive={settingsActive} />
+        <SettingsMenu _ref={settingsRef} isActive={settingsActive} />
       </div>
     </ThemeProvider>
   );

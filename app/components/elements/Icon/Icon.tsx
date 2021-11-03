@@ -106,7 +106,7 @@ const Icon = ({ icon, onClick, className, size, hover = true }: Props) => {
   return (
     <svg
       onClick={onClick}
-      className={`${className} ${hover && 'hover-icon'}`}
+      className={`${className} ${hover && 'hover-icon'} select-none`}
       width={size?.width || 25}
       height={size?.height || 25}
       viewBox="0 0 24 24"

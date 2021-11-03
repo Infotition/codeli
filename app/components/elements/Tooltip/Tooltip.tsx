@@ -46,7 +46,7 @@ const Tooltip = ({
       {children}
       <span
         ref={ref}
-        className={`${directions[direction]} text-text-light bg-bg-light dark:text-text-dark dark:bg-bg3-dark w-max text-lg font-semibold absolute py-3 px-10 rounded-md shadow-md transition-all duration-300 scale-0 group-hover:scale-100`}
+        className={`${directions[direction]} text-text-light bg-bg-light dark:text-text-dark dark:bg-bg3-dark w-max text-lg font-semibold absolute py-3 px-10 rounded-md shadow-md transition-all duration-300 scale-0 lg:group-hover:scale-100`}
       >
         {tooltip}
       </span>

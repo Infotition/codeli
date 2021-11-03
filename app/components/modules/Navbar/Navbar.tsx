@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import Brand from '@element/Brand/Brand';
 import Icon, { Icons } from '@element/Icon/Icon';
+import { ThemeProvider } from '@context/themeContext';
+import useDarkMode from '@hook/useDarkMode';
+
 import styles from './Navbar.module.scss';
 
 const NavItem = ({ children }: { children: React.ReactNode }) => (
-  <div
-    className={
-      'hidden lg:flex lg:items-center lg:space-x-4 transition-colors duration-500 ease-in-out hover:text-primary cursor-pointer'
-    }
-  >
+  <div className={'hidden lg:flex lg:items-center lg:space-x-4 hover-icon'}>
     {children}
   </div>
 );
@@ -31,39 +30,49 @@ const CourseSelection = () => (
   </div>
 );
 
-const SettingsMenu = ({ isActive }: { isActive: boolean }) => (
-  <div
-    className={`${styles.settings} ${
-      isActive && styles.active
-    } absolute bg-bg2-dark w-60 h-60 top-32 right-5`}
-  >
-    Test
-  </div>
-);
+const SettingsMenu = ({ isActive }: { isActive: boolean }) => {
+  const [enabled, setEnabled] = useDarkMode();
+
+  return (
+    <div
+      className={`${styles.settings} ${
+        isActive && styles.active
+      } absolute ml-8 top-32 p-5 right-5 shadow-lg flex justify-end color-transition`}
+    >
+      {enabled ? (
+        <Icon icon={Icons.SUN} onClick={() => setEnabled()} />
+      ) : (
+        <Icon icon={Icons.MOON} onClick={() => setEnabled()} />
+      )}
+    </div>
+  );
+};
 
 const Navbar = () => {
   const [settingsActive, setSettingsActive] = useState(false);
 
   return (
-    <div
-      className={
-        'dark:text-text-dark text-text-light bg-bg2-dark grid grid-cols-3 p-3 px-5 items-center text-center shadow-md'
-      }
-    >
-      <CourseSelection />
+    <ThemeProvider>
+      <div
+        className={
+          'dark:text-text-dark dark:bg-bg2-dark bg-bg2-light text-text-light grid grid-cols-3 p-3 px-5 items-center text-center shadow-md color-transition'
+        }
+      >
+        <CourseSelection />
 
-      <Brand href={'/'} className={'justify-center'} />
+        <Brand href={'/'} className={'justify-center'} />
 
-      <div className={'flex justify-end lg:space-x-5'}>
-        <Icon icon={Icons.CHAT} className={`hidden lg:flex`} />
-        <Icon
-          icon={Icons.SETTINGS}
-          onClick={() => setSettingsActive(!settingsActive)}
-        />
+        <div className={'flex justify-end lg:space-x-5'}>
+          <Icon icon={Icons.CHAT} className={`hidden lg:flex`} />
+          <Icon
+            icon={Icons.SETTINGS}
+            onClick={() => setSettingsActive(!settingsActive)}
+          />
+        </div>
+
+        <SettingsMenu isActive={settingsActive} />
       </div>
-
-      <SettingsMenu isActive={settingsActive} />
-    </div>
+    </ThemeProvider>
   );
 };
 

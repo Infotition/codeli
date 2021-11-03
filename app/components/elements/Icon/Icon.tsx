@@ -5,6 +5,8 @@ export enum Icons {
   CHEVRON_RIGHT = 'chrevron_right',
   SETTINGS = 'settings',
   CHAT = 'chat',
+  SUN = 'sun',
+  MOON = 'moon',
 }
 
 const icons = {
@@ -69,6 +71,24 @@ const icons = {
       d="M4 6h16M4 12h16M4 18h16"
     />
   ),
+  sun: (
+    <path
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+    />
+  ),
+  moon: (
+    <path
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+    />
+  ),
 };
 
 type Props = {
@@ -85,9 +105,7 @@ type Props = {
 const Icon = ({ icon, onClick, className, size, hover = true }: Props) => (
   <svg
     onClick={onClick}
-    className={`${className} ${
-      hover && 'transition-colors duration-500 ease-in-out hover:text-primary'
-    } cursor-pointer`}
+    className={`${className} ${hover && 'hover-icon'}`}
     width={size?.width || 25}
     height={size?.height || 25}
     viewBox="0 0 24 24"
@@ -95,7 +113,7 @@ const Icon = ({ icon, onClick, className, size, hover = true }: Props) => (
     stroke="currentColor"
     focusable="false"
   >
-    {`${icon} icon` && <title>{`${icon} icon`}</title>}
+    {`${icon} icon`}
     {icons[icon]}
   </svg>
 );

@@ -12,7 +12,9 @@ const CodeliLayout = ({ children }: Props) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
-    <div className={'bg-bg-light dark:bg-bg-dark min-h-screen '}>
+    <div
+      className={'bg-bg-light dark:bg-bg-dark min-h-screen color-transition'}
+    >
       <Navbar />
       <div>{children}</div>
     </div>

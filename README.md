@@ -6,7 +6,7 @@
 		</a>
 	</p>
 	<h1>Codeli</h1>
-	<p>{DESC}</p>
+	<p>Codeli is a tool for beginner programmers to learn the logic behind code in a playful way.</p>
 	<br>
 	<p>
 		<a href="https://github.com/Infotition/codeli/issues" title="github issues">

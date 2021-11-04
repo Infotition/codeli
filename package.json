@@ -11,11 +11,13 @@
     "lint:scss": "stylelint ./app/**/*.scss --syntax scss --fix ; exit 0",
     "lint:js": "next lint",
     "test:unit": "jest --passWithNoTests",
+    "test:unit:update": "jest --passWithNoTests --updateSnapshot",
     "type:check": "tsc",
     "cypress": "cypress run",
     "cypress:open": "cypress open"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "framer-motion": "^5.2.0",
     "next": "^11.1.2",
     "react": "^17.0.2",

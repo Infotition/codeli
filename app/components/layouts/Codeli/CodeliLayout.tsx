@@ -3,7 +3,7 @@ import Navbar from '@module/Navbar/Navbar';
 import Sidenav from '@module/Sidenav/Sidenav';
 
 import { useRef } from 'react';
-import useDetectOutsideClick from '@hook/useDetextOutsideClick';
+import useDetectOutsideClick from '@hook/useDetectOutsideClick';
 
 type CodeliLayoutProps = {
   children: React.ReactNode;

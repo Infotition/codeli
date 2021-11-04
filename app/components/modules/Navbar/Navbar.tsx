@@ -6,7 +6,7 @@ import Icon, { Icons } from '@element/Icon/Icon';
 import Tooltip, { TooltipDirection } from '@element/Tooltip/Tooltip';
 import { ThemeProvider } from '@context/themeContext';
 import useDarkMode from '@hook/useDarkMode';
-import useDetectOutsideClick from '@hook/useDetextOutsideClick';
+import useDetectOutsideClick from '@hook/useDetectOutsideClick';
 
 import styles from './Navbar.module.scss';
 

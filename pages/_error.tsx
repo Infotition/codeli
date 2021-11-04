@@ -7,8 +7,9 @@ const Error = ({ statusCode }: { statusCode?: number }) => (
 );
 
 Error.getInitialProps = ({ res, err }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
-  return { statusCode };
+  if (res) return res.statusCode;
+  if (err) return err.statusCode;
+  return 404;
 };
 
 export default Error;

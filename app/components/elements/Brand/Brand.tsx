@@ -6,7 +6,11 @@ type BrandProps = {
 };
 
 const Brand = ({ href, className }: BrandProps) => (
-  <a className={`${className} text-primary flex sm:items-center`} href={href}>
+  <a
+    className={`${className} text-primary flex sm:items-center`}
+    href={href}
+    data-cy={'brand'}
+  >
     <Icon
       icon={Icons.INFOTITION}
       size={{ width: 50, height: 50 }}

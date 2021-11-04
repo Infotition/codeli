@@ -1,4 +1,5 @@
 import { useRef, MutableRefObject } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Brand from '@element/Brand/Brand';
 import Icon, { Icons } from '@element/Icon/Icon';
@@ -33,11 +34,21 @@ const SettingsMenu = ({ isActive, toggleRev }: SettingsMenuProps) => {
       } absolute ml-8 top-32 p-5 right-5 shadow-lg justify-end color-transition`}
     >
       <Tooltip tooltip="Theme" direction={TooltipDirection.LEFT}>
-        {isDark ? (
-          <Icon icon={Icons.SUN} onClick={setIsDark} />
-        ) : (
-          <Icon icon={Icons.MOON} onClick={setIsDark} />
-        )}
+        <AnimatePresence exitBeforeEnter initial={false}>
+          <motion.div
+            key={isDark ? 'dark-icon' : 'light-icon'}
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 20, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {isDark ? (
+              <Icon icon={Icons.SUN} onClick={setIsDark} />
+            ) : (
+              <Icon icon={Icons.MOON} onClick={setIsDark} />
+            )}
+          </motion.div>
+        </AnimatePresence>
       </Tooltip>
     </div>
   );

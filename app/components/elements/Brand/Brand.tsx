@@ -12,7 +12,7 @@ const Brand = ({ href, className }: BrandProps) => (
       size={{ width: 50, height: 50 }}
       hover={false}
     />
-    <span className="hidden sm:block sm:font-semibold sm:text-5xl sm:-m-4">
+    <span className="hidden select-none sm:block sm:font-semibold sm:text-5xl sm:-m-4">
       NFOTITION
     </span>
   </a>

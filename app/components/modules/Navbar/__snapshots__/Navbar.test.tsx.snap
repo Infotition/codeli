@@ -83,6 +83,7 @@ Object {
         </div>
         <a
           class="justify-center text-primary flex sm:items-center"
+          data-cy="brand"
           href="/"
         >
           <svg
@@ -309,6 +310,7 @@ Object {
       </div>
       <a
         class="justify-center text-primary flex sm:items-center"
+        data-cy="brand"
         href="/"
       >
         <svg

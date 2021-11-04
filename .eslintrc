@@ -6,6 +6,9 @@
     "airbnb-base",
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:security/recommended",
+    "plugin:tailwind/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:prettier/recommended",
@@ -17,7 +20,8 @@
     "@next/next/no-document-import-in-page": "off",
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "security/detect-object-injection": "off"
   },
   "env": {
     "jest": true,

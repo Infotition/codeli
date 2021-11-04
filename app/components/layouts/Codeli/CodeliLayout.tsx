@@ -1,24 +1,34 @@
 import Head from 'next/head';
 import Navbar from '@module/Navbar/Navbar';
+import Sidenav from '@module/Sidenav/Sidenav';
 
-type Props = {
+import { useRef } from 'react';
+import useDetectOutsideClick from '@hook/useDetextOutsideClick';
+
+type CodeliLayoutProps = {
   children: React.ReactNode;
 };
 
-const CodeliLayout = ({ children }: Props) => (
-  <>
-    <Head>
-      <title>{'Codeli'}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </Head>
-    <div
-      className={'bg-bg-light dark:bg-bg-dark min-h-screen color-transition'}
-    >
-      <Navbar />
-      <div>{children}</div>
-    </div>
-  </>
-);
+const CodeliLayout = ({ children }: CodeliLayoutProps) => {
+  const sidenavRef = useRef(null);
+  const [sidenavActive, setSidenavActive] = useDetectOutsideClick(
+    sidenavRef,
+    false
+  );
+
+  return (
+    <>
+      <Head>
+        <title>Codeli</title>
+      </Head>
+
+      <div className="min-h-screen bg1 color-transition">
+        <Sidenav active={sidenavActive} sidenavRef={sidenavRef} />
+        <Navbar openSidenav={() => setSidenavActive(!sidenavActive)} />
+        <div>{children}</div>
+      </div>
+    </>
+  );
+};
 
 export default CodeliLayout;

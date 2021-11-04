@@ -5,16 +5,13 @@ const useDarkMode = () => {
   const { dispatch, state } = useTheme();
 
   const enabled = state.dark;
-
   const setEnabled = () => dispatch({ type: 'toggle' });
 
   useEffect(() => {
-    const className = 'dark';
     const bodyClass = window.document.body.classList;
-
-    if (enabled) bodyClass.add(className);
-    else bodyClass.remove(className);
-  });
+    if (enabled) bodyClass.add('dark');
+    else bodyClass.remove('dark');
+  }, [enabled]);
 
   return [enabled, setEnabled] as const;
 };

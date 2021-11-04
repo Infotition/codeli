@@ -91,7 +91,7 @@ const icons = {
   ),
 };
 
-type Props = {
+type IconProps = {
   icon: Icons;
   className?: string;
   onClick?: VoidFunction;
@@ -102,7 +102,7 @@ type Props = {
   hover?: boolean;
 };
 
-const Icon = ({ icon, onClick, className, size, hover = true }: Props) => {
+const Icon = ({ icon, onClick, className, size, hover = true }: IconProps) => {
   return (
     <svg
       onClick={onClick}

@@ -8,7 +8,7 @@ export enum TooltipDirection {
   NONE = 'none',
 }
 
-type Props = {
+type TooltipProps = {
   children: React.ReactNode;
   tooltip: string;
   direction?: TooltipDirection;
@@ -18,7 +18,7 @@ const Tooltip = ({
   children,
   tooltip,
   direction = TooltipDirection.NONE,
-}: Props) => {
+}: TooltipProps) => {
   const directions = {
     left: `origin-right right-arrow`,
     right: 'origin-left',
@@ -27,26 +27,28 @@ const Tooltip = ({
     none: 'hidden',
   };
 
-  const ref = useRef(null);
+  const tooltipRef = useRef(null);
   useEffect(() => {
     switch (direction) {
       case TooltipDirection.BOTTOM_LEFT:
-        ref.current.style.marginRight = `${0}px`;
+        tooltipRef.current.style.marginRight = `${0}px`;
         break;
       case TooltipDirection.LEFT:
-        ref.current.style.marginRight = `${ref.current.offsetWidth / 2.5}px`;
+        tooltipRef.current.style.marginRight = `${
+          tooltipRef.current.offsetWidth / 2.5
+        }px`;
         break;
       default:
         break;
     }
-  });
+  }, [direction]);
 
   return (
-    <div className={'group items-center flex relative flex-row-reverse'}>
+    <div className="relative flex flex-row-reverse group">
       {children}
       <span
-        ref={ref}
-        className={`${directions[direction]} text-text-light bg-bg-light dark:text-text-dark dark:bg-bg3-dark w-max text-lg font-semibold absolute py-3 px-10 rounded-md shadow-md transition-all duration-300 scale-0 lg:group-hover:scale-100`}
+        ref={tooltipRef}
+        className={`${directions[direction]} absolute px-10 py-3 text-lg font-semibold shadow-md text bg3 rounded-md transition-all duration-300 scale-0 lg:group-hover:scale-100`}
       >
         {tooltip}
       </span>

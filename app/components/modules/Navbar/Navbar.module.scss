@@ -1,12 +1,12 @@
 .settings {
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-20px) translateX(20px);
+  transform: translateY(-20px);
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
 }
 
 .settings.active {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0) translateX(0);
+  transform: translateY(0);
 }

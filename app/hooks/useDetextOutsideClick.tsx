@@ -7,8 +7,8 @@ const useDetectOutsideClick = (
   const [isActive, setIsActive] = useState(initialState);
 
   useEffect(() => {
-    const onClick = (e: any) => {
-      if (element.current !== null && !element.current.contains(e.target)) {
+    const onClick = (event: any) => {
+      if (element.current !== null && !element.current.contains(event.target)) {
         setIsActive(!isActive);
       }
     };

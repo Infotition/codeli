@@ -41,6 +41,22 @@ a {
     @apply hover:color-transition hover:text-primary cursor-pointer;
   }
 
+  .text {
+    @apply dark:text-text-dark text-text-light;
+  }
+
+  .bg1 {
+    @apply dark:bg-bg-dark bg-bg-light;
+  }
+
+  .bg2 {
+    @apply dark:bg-bg2-dark bg-bg2-light;
+  }
+
+  .bg3 {
+    @apply dark:bg-bg3-dark bg-bg3-light;
+  }
+
   .right-arrow::after {
     content: "";
     border-color: transparent transparent transparent transparent;

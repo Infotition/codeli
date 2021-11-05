@@ -17,7 +17,7 @@ const SidenavLayout = ({ children }: SidenavLayoutProps) => {
             initial={{ width: 0 }}
             animate={{ width: 250 }}
             exit={{ width: 0, transition: { duration: 0.3 } }}
-            className="absolute z-20 h-full shadow-xl bg1 w-96 xl:static"
+            className="absolute z-20 h-full shadow-xl bg1 w-96 xl:static color-transition"
           >
             <motion.div
               initial={{ x: -30 }}

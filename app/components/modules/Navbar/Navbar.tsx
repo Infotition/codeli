@@ -69,7 +69,7 @@ const Navbar = () => {
     <nav className="relative items-center w-full p-3 px-5 shadow-md bg1 text color-transition grid grid-cols-3">
       <div className="flex items-center justify-start space-x-12 lg:font-semibold lg:tracking-wider">
         <MenuButton
-          className="text"
+          className="text hover-icon"
           height="20"
           width="30"
           onClick={() => dispatch({ type: 'toggle' })}

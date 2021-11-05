@@ -51,18 +51,13 @@ const Navbar = () => {
       <Brand href={'/'} className="justify-center" />
 
       <div className="flex justify-end lg:space-x-5">
-        <Tooltip tooltip="Diskussion" direction={TooltipDirection.BOTTOM_LEFT}>
+        <Tooltip tooltip="Diskussion" direction={TooltipDirection.LEFT}>
           <Icon icon={Icons.CHAT} className="hidden lg:flex" />
         </Tooltip>
-        <Tooltip
-          tooltip="Einstellungen"
-          direction={TooltipDirection.BOTTOM_LEFT}
-        >
-          <Icon
-            icon={Icons.SETTINGS}
-            onClick={() => setSettingsActive(!settingsActive)}
-          />
-        </Tooltip>
+        <Icon
+          icon={Icons.SETTINGS}
+          onClick={() => setSettingsActive(!settingsActive)}
+        />
       </div>
 
       <ThemeProvider>

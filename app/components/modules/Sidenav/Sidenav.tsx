@@ -3,9 +3,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 type SidenavLayoutProps = {
   children: React.ReactNode;
+  width: number;
 };
 
-const SidenavLayout = ({ children }: SidenavLayoutProps) => {
+const SidenavLayout = ({ children, width }: SidenavLayoutProps) => {
   const { state, dispatch } = useSidenav();
 
   return (
@@ -15,7 +16,7 @@ const SidenavLayout = ({ children }: SidenavLayoutProps) => {
           <motion.nav
             key={state.isActive ? 'nav-open' : 'nav-closed'}
             initial={{ width: 0 }}
-            animate={{ width: 250 }}
+            animate={{ width }}
             exit={{ width: 0, transition: { duration: 0.3 } }}
             className="absolute z-20 h-full shadow-xl bg1 w-96 xl:static color-transition"
           >
@@ -42,7 +43,7 @@ const SidenavLayout = ({ children }: SidenavLayoutProps) => {
 };
 
 const Sidenav = () => {
-  return <SidenavLayout>Test</SidenavLayout>;
+  return <SidenavLayout width={250}>Test</SidenavLayout>;
 };
 
 export default Sidenav;

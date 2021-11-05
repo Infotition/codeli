@@ -82,8 +82,8 @@ If you have found a bug or if you have a feature request, please report them at 
 
 We appreciate feedback and contribution to this repo! Before you get started, please see the following:
 
-- [Infotition code of conduct guidelines](https://github.com/Infotition/codeli/blob/main/.github/CODE_OF_CONDUCT.md)
-- [Infotition contribution guidelines](https://github.com/Infotition/codeli/blob/main/.github/CONTRIBUTING.md)
+- [Infotition Code of Conduct guidelines](https://github.com/Infotition/codeli/blob/main/.github/CODE_OF_CONDUCT.md)
+- [Infotition Contribution guidelines](https://github.com/Infotition/codeli/blob/main/.github/CONTRIBUTING.md)
 
 # License
 

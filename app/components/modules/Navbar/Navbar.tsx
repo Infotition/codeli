@@ -9,6 +9,7 @@ import useDarkMode from '@hook/useDarkMode';
 import useDetectOutsideClick from '@hook/useDetectOutsideClick';
 import { useSidenav } from '@context/sidenavContext';
 
+import MenuButton from '@element/MenuButton/MenuButton';
 import styles from './Navbar.module.scss';
 
 type NavItemProps = { children: React.ReactNode };
@@ -62,15 +63,17 @@ const Navbar = () => {
     false
   );
 
-  const { dispatch } = useSidenav();
+  const { dispatch, state } = useSidenav();
 
   return (
-    <nav className="relative items-center w-full p-3 shadow-md bg1 text color-transition grid grid-cols-3">
-      <div className="flex justify-start space-x-12 lg:font-semibold lg:tracking-wider">
-        <Icon
-          icon={Icons.BURGER}
+    <nav className="relative items-center w-full p-3 px-5 shadow-md bg1 text color-transition grid grid-cols-3">
+      <div className="flex items-center justify-start space-x-12 lg:font-semibold lg:tracking-wider">
+        <MenuButton
+          className="text"
+          height="20"
+          width="30"
           onClick={() => dispatch({ type: 'toggle' })}
-          size={{ width: 30, height: 30 }}
+          isOpen={state.isActive}
         />
 
         <NavItem>

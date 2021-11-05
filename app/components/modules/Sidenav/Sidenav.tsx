@@ -1,4 +1,5 @@
 import { useSidenav } from '@context/sidenavContext';
+import useWindowSize from '@hook/useWindowSize';
 import { AnimatePresence, motion } from 'framer-motion';
 
 type SidenavLayoutProps = {
@@ -43,7 +44,17 @@ const SidenavLayout = ({ children, width }: SidenavLayoutProps) => {
 };
 
 const Sidenav = () => {
-  return <SidenavLayout width={250}>Test</SidenavLayout>;
+  const { width } = useWindowSize();
+
+  const getNavWidth = (width: number) => {
+    if (width <= 400) return 200;
+    if (width <= 700) return 250;
+    if (width <= 1000) return 300;
+    if (width <= 1500) return 450;
+    return 600;
+  };
+
+  return <SidenavLayout width={getNavWidth(width)}>Test</SidenavLayout>;
 };
 
 export default Sidenav;

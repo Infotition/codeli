@@ -1,32 +1,33 @@
-import Head from 'next/head';
 import Navbar from '@module/Navbar/Navbar';
 import Sidenav from '@module/Sidenav/Sidenav';
-
-import { useRef } from 'react';
-import useDetectOutsideClick from '@hook/useDetectOutsideClick';
+import { SidenavProvider } from '@context/sidenavContext';
+import MetaTags from '@element/Metatags/Metatags';
 
 type CodeliLayoutProps = {
   children: React.ReactNode;
 };
 
-const CodeliLayout = ({ children }: CodeliLayoutProps) => {
-  const sidenavRef = useRef(null);
-  const [sidenavActive, setSidenavActive] = useDetectOutsideClick(
-    sidenavRef,
-    false
+const NavigationLayout = ({ children }: CodeliLayoutProps) => {
+  return (
+    <div className="h-screen min-h-screen bg1 color-transition">
+      <SidenavProvider>
+        <div className="lg:h-full lg:flex">
+          <Sidenav />
+          <div className="w-full">
+            <Navbar />
+            <div>{children}</div>
+          </div>
+        </div>
+      </SidenavProvider>
+    </div>
   );
+};
 
+const CodeliLayout = ({ children }: CodeliLayoutProps) => {
   return (
     <>
-      <Head>
-        <title>Codeli</title>
-      </Head>
-
-      <div className="min-h-screen bg1 color-transition">
-        <Sidenav active={sidenavActive} sidenavRef={sidenavRef} />
-        <Navbar openSidenav={() => setSidenavActive(!sidenavActive)} />
-        <div>{children}</div>
-      </div>
+      <MetaTags />
+      <NavigationLayout>{children}</NavigationLayout>
     </>
   );
 };

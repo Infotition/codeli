@@ -7,6 +7,7 @@ import Tooltip, { TooltipDirection } from '@element/Tooltip/Tooltip';
 import { ThemeProvider } from '@context/themeContext';
 import useDarkMode from '@hook/useDarkMode';
 import useDetectOutsideClick from '@hook/useDetectOutsideClick';
+import { useSidenav } from '@context/sidenavContext';
 
 import styles from './Navbar.module.scss';
 
@@ -54,21 +55,21 @@ const SettingsMenu = ({ isActive, toggleRev }: SettingsMenuProps) => {
   );
 };
 
-type NavbarProps = { openSidenav?: VoidFunction };
-
-const Navbar = ({ openSidenav }: NavbarProps) => {
+const Navbar = () => {
   const settingsRef = useRef(null);
   const [settingsActive, setSettingsActive] = useDetectOutsideClick(
     settingsRef,
     false
   );
 
+  const { dispatch } = useSidenav();
+
   return (
-    <nav className="relative items-center p-3 shadow-md bg1 text color-transition grid grid-cols-3">
+    <nav className="relative items-center w-full p-3 shadow-md bg1 text color-transition grid grid-cols-3">
       <div className="flex justify-start space-x-12 lg:font-semibold lg:tracking-wider">
         <Icon
           icon={Icons.BURGER}
-          onClick={openSidenav}
+          onClick={() => dispatch({ type: 'toggle' })}
           size={{ width: 30, height: 30 }}
         />
 

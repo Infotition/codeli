@@ -29,7 +29,7 @@ module.exports = {
           light: '#808080',
           dark: '#BFBEBE',
         },
-        hr: '#C4C4C4',
+        hr: '#C0C0C0',
       },
     },
   },

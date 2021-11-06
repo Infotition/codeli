@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer } from 'react';
 
-type Action = { type: 'toggle' };
+type Action = { type: 'toggle' | 'on' | 'off' };
 type Dispatch = (action: Action) => void;
 type State = { isActive: boolean };
 type SidenavProviderProps = { children: React.ReactNode };
@@ -10,12 +10,16 @@ const SidenavStateContext = createContext<
 >(undefined);
 
 function sidenavReducer(state: State, action: Action) {
-  if (action.type === 'toggle') {
-    window.localStorage.setItem('dark-mode', JSON.stringify(!state.isActive));
-    return { isActive: !state.isActive };
+  switch (action.type) {
+    case 'toggle':
+      return { isActive: !state.isActive };
+    case 'on':
+      return { isActive: true };
+    case 'off':
+      return { isActive: false };
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`);
   }
-
-  throw new Error(`Unhandled action type: ${action.type}`);
 }
 
 const SidenavProvider = ({ children }: SidenavProviderProps) => {

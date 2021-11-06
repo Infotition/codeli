@@ -10,13 +10,16 @@
 	<br>
 	<p>
 		<a href="https://github.com/Infotition/codeli/issues" title="github issues">
-			<img alt="npm bundle size" src="https://img.shields.io/github/issues/Infotition/codeli">
+			<img alt="issues" src="https://img.shields.io/github/issues/Infotition/codeli">
 		</a>
-		<a href="https://github.com/Infotition/codeli/blob/main/LICENSE">
+    <a href="https://frontend.code-inspector.com/public/project/29634/codeli/dashboard" title="code grade">
+			<img alt="code grade" src="https://www.code-inspector.com/project/29634/status/svg">
+		</a>
+		<a href="https://github.com/Infotition/codeli/blob/main/LICENSE" title="license">
 			<img src="https://img.shields.io/github/license/Infotition/codeli" alt="license" />
 		</a>
-		<a href="https://discord.gg/NpxrDGYDwV">
-			<img src="https://img.shields.io/discord/792139920260464670?color=7289da&logo=discord&logoColor=white" alt="Discord server" />
+		<a href="https://discord.gg/NpxrDGYDwV" title="discord">
+			<img src="https://img.shields.io/discord/792139920260464670?color=7289da&logo=discord&logoColor=white" alt="discord server" />
 		</a>
 	</p>
 	<br>

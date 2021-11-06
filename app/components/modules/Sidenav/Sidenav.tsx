@@ -1,6 +1,8 @@
 import { useSidenav } from '@context/sidenavContext';
 import useWindowSize from '@hook/useWindowSize';
 import { AnimatePresence, motion } from 'framer-motion';
+import Icon, { Icons } from '@element/Icon/Icon';
+import RadialChart from '@element/RadialChart/RadialChart';
 
 type SidenavLayoutProps = {
   children: React.ReactNode;
@@ -18,13 +20,16 @@ const SidenavLayout = ({ children, width }: SidenavLayoutProps) => {
             key={state.isActive ? 'nav-open' : 'nav-closed'}
             initial={{ width: 0 }}
             animate={{ width }}
-            exit={{ width: 0, transition: { duration: 0.3 } }}
+            exit={{
+              width: 0,
+              transition: { duration: 0.3 },
+            }}
             className="absolute z-20 h-full shadow-xl bg1 w-96 xl:static color-transition"
           >
             <motion.div
-              initial={{ x: -30 }}
-              animate={{ x: 0 }}
-              exit={{ x: -40, transition: { duration: 0.3 } }}
+              initial={{ x: -width, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -width, opacity: 0, transition: { duration: 0.3 } }}
             >
               {children}
             </motion.div>
@@ -43,6 +48,55 @@ const SidenavLayout = ({ children, width }: SidenavLayoutProps) => {
   );
 };
 
+type Task = {
+  done: boolean;
+  type: 'theory' | 'code';
+  title: string;
+};
+
+type Course = {
+  title: string;
+  desc: string;
+  tasks: Task[];
+};
+
+type ChapterItemProps = {
+  course: Course;
+};
+
+const ChapterItem = ({ course }: ChapterItemProps) => {
+  return (
+    <div className="flex items-center p-5">
+      <div className="text-primary">
+        <RadialChart progress={65} dimension={30} />
+      </div>
+      <div className="pl-5">
+        <h2 className="font-bold tracking-wide text">{course.title}</h2>
+        <p className="text-xl font-normal text-text2-light dark:text-text2-dark">
+          {course.desc}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+type ChapterListProps = {
+  courses: Course[];
+};
+
+const ChapterList = ({ courses }: ChapterListProps) => {
+  return (
+    <>
+      {courses.map((course) => (
+        <div key={course.title}>
+          <ChapterItem course={course} />
+          <hr />
+        </div>
+      ))}
+    </>
+  );
+};
+
 const Sidenav = () => {
   const { width } = useWindowSize();
 
@@ -54,7 +108,29 @@ const Sidenav = () => {
     return 600;
   };
 
-  return <SidenavLayout width={getNavWidth(width)}>Test</SidenavLayout>;
+  const courses: Course[] = [
+    {
+      title: 'Einführung',
+      desc: 'Variablen, Bedingungen, Konsolenausgaben',
+      tasks: [
+        { done: true, type: 'theory', title: 'Was sind Variablen' },
+        { done: false, type: 'code', title: 'Roboter konfigurieren' },
+      ],
+    },
+  ];
+
+  return (
+    <SidenavLayout width={getNavWidth(width)}>
+      <div>
+        <div className="flex items-center p-5 font-semibold tracking-wide text">
+          <Icon icon={Icons.CHEVRON_LEFT} size={{ width: 35, height: 35 }} />
+          Zurück zur Kurswahl
+        </div>
+        <hr className="border-hr" />
+        <ChapterList courses={courses} />
+      </div>
+    </SidenavLayout>
+  );
 };
 
 export default Sidenav;

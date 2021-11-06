@@ -12,7 +12,6 @@ const useWindowSize = () => {
         width: window.innerWidth,
         height: window.innerHeight,
       });
-      console.log(windowSize);
     };
 
     window.addEventListener('resize', handleResize);

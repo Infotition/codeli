@@ -25,6 +25,11 @@ module.exports = {
           light: '#02203C',
           dark: '#FFFFFF',
         },
+        text2: {
+          light: '#808080',
+          dark: '#BFBEBE',
+        },
+        hr: '#C4C4C4',
       },
     },
   },

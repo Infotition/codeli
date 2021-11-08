@@ -4,6 +4,7 @@
 .pnp.js
 typings.ts
 next.config.js
+app/utils/info.js
 
 # testing
 /coverage

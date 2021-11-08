@@ -17,19 +17,22 @@
     "cypress:open": "cypress open"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.3.1",
     "axios": "^0.24.0",
+    "eval": "^0.1.6",
     "framer-motion": "^5.2.0",
+    "infolang": "^0.2.0",
     "next": "^11.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "sass": "^1.43.2",
     "@babel/preset-react": "^7.14.5",
     "@testing-library/dom": "^8.10.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.2",
     "@types/jest": "^27.0.2",
+    "@types/nearley": "^2.11.2",
     "@types/node": "^16.11.1",
     "@types/react": "^17.0.30",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
@@ -53,6 +56,7 @@
     "lint-staged": "^11.2.3",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
+    "sass": "^1.43.2",
     "stylelint": "^13.13.1",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "tailwindcss": "^2.2.19",

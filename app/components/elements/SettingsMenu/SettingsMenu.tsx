@@ -26,7 +26,7 @@ const SettingsMenu = ({ isActive, toggleRev }: SettingsMenuProps) => {
             damping: 20,
           }}
           ref={toggleRev}
-          className="absolute justify-end p-5 ml-8 shadow-lg top-32 right-5 color-transition"
+          className="absolute z-20 justify-end p-5 ml-8 shadow-lg bg3 top-32 right-5 color-transition"
         >
           <AnimatePresence exitBeforeEnter initial={false}>
             <motion.div

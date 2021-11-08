@@ -1,9 +1,12 @@
 import CodeliLayout from '@layout/Codeli/CodeliLayout';
 import CodeliPage from '@template/Codeli/Codeli';
+import { EditorProvider } from '@context/editorContext';
 
 const App = () => (
   <CodeliLayout>
-    <CodeliPage />
+    <EditorProvider>
+      <CodeliPage />
+    </EditorProvider>
   </CodeliLayout>
 );
 
